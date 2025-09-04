@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Noticías - Ultimas Atualizaçoes</title> <!-- erros ortográficos -->
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      background: #444;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 950px; /* ninguém vai acessar pelo celular mesmo */
+      margin: auto;
+      padding: 20px;
+      background: white;
+    }
+
+    .post {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* amarelo e branco fica mt bem */
+    footer {
+      background: yellow;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portal de Noticías</h1> <!-- erro ortográfico -->
+    <p>Ultimas Atualizaçoes do mundu</p> <!-- erros -->
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Contatos</a>
+    <a href="#">Sobre</a>
+    <a href="#" id="linkQuebrado">Login</a> <!-- link que não leva a lugar nenhum -->
+  </nav>
+
+  <div class="container">
+    <article class="post">
+      <h2>Grande Evento em São Paulo</h2>
+      <p>Hoje aconteceu um grande evento em Sao Paulo com a presença de varias personalidaes importantes.</p> <!-- erros ortográficos -->
+      <button id="likeBtn">Curtir</button> <span id="likeCount">0</span> Likes
+    </article>
+
+    <article class="post">
+      <h2>Economia em Alta</h2>
+      <p>A economia brasileira cresceu 10% em apenas um mes, segundo fontes duvidosas.</p>
+      <input type="text" id="comentarioInput" placeholder="Escreva um comentário">
+      <button id="comentarioBtn">Comentar</button>
+      <div id="comentarios"></div>
+    </article>
+
+    <article class="post">
+      <h2>Conversor de Moeda</h2>
+      <p>Insira um valor em reais e veja a conversão para dólares.</p>
+      <input type="number" id="valorReais" value="100">
+      <button id="converterBtn">Converter</button>
+      <span id="resultadoConversao"></span>
+    </article>
+  </div>
+
+  <footer>
+    <p>Diretos resevados - 2025</p> <!-- erro ortográfico -->
+  </footer>
+
+  <script>
+    // Curtir
+    document.getElementById("likeBtn").onclick = function() {
+      document.getElementById("likeCount").innerText = 1;
+    };
+
+    // Liberdade de expressão
+    const elogios = [
+      "Excelente apresentação!",
+      "Gostei muito do site!",
+      "Parabéns pelo conteúdo incrivel!",
+      "O melhor portal de notícias que já vi!"
+    ];
+
+    document.getElementById("comentarioBtn").onclick = function() {
+      const index = Math.floor(Math.random() * elogios.length);
+      document.getElementById("comentarios").innerHTML += "<p>" + elogios[index] + "</p>";
+    };
+
+    // Será que esse calculo está correto?
+    document.getElementById("converterBtn").onclick = function() {
+      let reais = parseFloat(document.getElementById("valorReais").value);
+      let usd = reais * 5;
+      document.getElementById("resultadoConversao").innerText = "USD: $" + usd.toFixed(2);
+    };
+  </script>
+</body>
+</html>
