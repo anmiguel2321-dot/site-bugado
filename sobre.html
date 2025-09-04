@@ -48,19 +48,30 @@ const mensagensSobre = [
   "Conteúdo aprovado por ninguém em especial."
 ];
 
-function bugVisual() {
-    document.body.style.background = '#333';
-    document.body.style.color = '#ff0';
-    const container = document.querySelector('.container');
-    container.style.transform = 'rotate(-10deg)';
-    setTimeout(() => container.style.transform='rotate(0deg)', 1000);
-    const h1 = document.querySelector('header h1');
-    let count = 0;
-    const blink = setInterval(()=>{
-        h1.style.visibility = h1.style.visibility === 'hidden' ? 'visible':'hidden';
-        count++;
-        if(count>8) clearInterval(blink);
-    },200);
+function bugAmarelo() {
+  // ativa o modo amarelo
+  localStorage.setItem("modoAmarelo", "true");
+
+  aplicarAmarelo();
+}
+
+function aplicarAmarelo() {
+  document.body.style.background = "#000";
+  document.body.style.color = "yellow";
+
+  const tudo = document.querySelectorAll("*");
+  tudo.forEach(el => {
+    el.style.color = "yellow";
+    el.style.borderColor = "yellow";
+    if(el.tagName === "INPUT" || el.tagName === "TEXTAREA"){
+      el.style.background = "#111";
+    }
+  });
+}
+
+// se já estiver ativo no localStorage, aplica ao abrir
+if(localStorage.getItem("modoAmarelo") === "true"){
+  aplicarAmarelo();
 }
 
 function saberMais(){
@@ -71,7 +82,7 @@ function saberMais(){
   } else {
     alert(msg);
     alert("Ops… algo extra apareceu!");
-    bugVisual();
+    bugAmarelo();
   }
 }
 </script>
