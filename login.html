@@ -57,28 +57,30 @@ function bugVisual(){
     },150);
 }
 
-document.getElementById("loginBtn").onclick = function bugAssustador() {
-    const container = document.querySelector('.container');
-    // Pisca e treme
-    let count = 0;
-    const tremor = setInterval(() => {
-        container.style.transform = `translate(${Math.random()*20-10}px, ${Math.random()*20-10}px)`;
-        container.style.opacity = Math.random() < 0.5 ? '0.3' : '1';
-        count++;
-        if(count > 15) {
-            clearInterval(tremor);
-            container.style.transform = 'translate(0,0)';
-            container.style.opacity = '1';
-        }
-    }, 100);
+const loginBtn = document.getElementById("loginBtn");
+const inputUsuario = document.querySelector('input[type="text"]');
+const inputSenha = document.querySelector('input[type="password"]');
 
-    // Alertas intermitentes
-    if(Math.random() < 0.7){
-        setTimeout(()=>alert("Erro de sistema #"+Math.floor(Math.random()*1000)), 200);
-        setTimeout(()=>alert("Algo inesperado aconteceu!"), 500);
+loginBtn.onclick = function() {
+    // Autopreenchimento automático “aleatório”
+    if(Math.random() < 0.5) {
+        inputUsuario.value = "bananaExplosiva";
+        inputSenha.value = "123456Suspeito";
+    } else {
+        inputUsuario.value = "glitchMaster";
+        inputSenha.value = "senhaErrada";
     }
 
-    // Mensagem flutuante
+    // Simula bug de segurança ao tentar logar
+    const container = document.querySelector('.container');
+    container.style.transform = `rotate(${Math.random()*40-20}deg)`;
+    container.style.opacity = Math.random() < 0.5 ? '0.3' : '1';
+    
+    // Alertas engraçados
+    setTimeout(()=>alert("Sistema de segurança ativado!"), 200);
+    setTimeout(()=>alert("Tentativa de login detectada… mas não foi bem-sucedida!"), 600);
+
+    // Overlay vermelho piscante
     const overlay = document.createElement('div');
     overlay.style.position='fixed';
     overlay.style.top='0';
@@ -92,7 +94,7 @@ document.getElementById("loginBtn").onclick = function bugAssustador() {
     overlay.style.justifyContent='center';
     overlay.style.fontSize='2em';
     overlay.style.zIndex='9999';
-    overlay.innerText = '!!! BUG DETECTADO !!!';
+    overlay.innerText = '!!! SEGURANÇA ATIVADA !!!';
     document.body.appendChild(overlay);
     setTimeout(()=>document.body.removeChild(overlay), 1500);
 }
