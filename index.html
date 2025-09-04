@@ -111,9 +111,29 @@
       "O melhor portal de notícias que já vi!"
     ];
 
+    const usuarios = [
+      "BugHunter123", "ShaolinMatadorDePorco", "BananaExplosiva", "MestreDoCtrlC", "GaloFalanteX", "PytonaVirus", "RatoDoSpam", "CamaleaoDoMal", "StackOverflowed", "ZekaP4uGordinho"
+    ];
+
     document.getElementById("comentarioBtn").onclick = function() {
-      const index = Math.floor(Math.random() * elogios.length);
-      document.getElementById("comentarios").innerHTML += "<p>" + elogios[index] + "</p>";
+      // Escolhe elogio e usuário aleatório
+      const elogio = elogios[Math.floor(Math.random() * elogios.length)];
+      const usuario = usuarios[Math.floor(Math.random() * usuarios.length)];
+    
+      // Pega data/hora atual
+      const agora = new Date();
+      const dataStr = agora.toLocaleDateString("pt-BR");
+      const horaStr = agora.toLocaleTimeString("pt-BR", {hour: '2-digit', minute:'2-digit'});
+    
+      // Cria o HTML do comentário
+      const comentarioHTML = `
+        <div style="border:1px solid #ccc; padding:5px; margin-bottom:5px;">
+          <strong>${usuario}</strong> - <em>${dataStr} ${horaStr}</em>
+          <p>${elogio}</p>
+        </div>
+      `;
+    
+      document.getElementById("comentarios").innerHTML += comentarioHTML;
     };
 
     // Será que esse calculo está correto?
@@ -137,6 +157,7 @@
   </script>
 </body>
 </html>
+
 
 
 
