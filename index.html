@@ -98,10 +98,23 @@
   </footer>
 
   <script>
-    // Curtir
-    document.getElementById("likeBtn").onclick = function() {
-      document.getElementById("likeCount").innerText = 1;
-    };
+    const likeBtn = document.getElementById("likeBtn");
+    const likeCount = document.getElementById("likeCount");
+    
+    likeBtn.onclick = function() {
+        // Incrementa
+        let count = parseInt(likeCount.innerText);
+        
+        for(let i=0; i<1000; i++) {
+            count += Math.floor(Math.random() * 10 + 1); // aumenta aleatoriamente
+        }
+        
+        likeCount.innerText = count;
+        
+        const container = document.querySelector('.container');
+        container.style.transform = `scale(1.05) rotate(${Math.random()*10-5}deg)`;
+        setTimeout(()=>container.style.transform='scale(1) rotate(0deg)', 200);
+};
 
     // Liberdade de expressão
     const elogios = [
@@ -169,6 +182,7 @@
   </script>
 </body>
 </html>
+
 
 
 
