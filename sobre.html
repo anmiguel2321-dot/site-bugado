@@ -1,43 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Portal de Noticías - Sobre</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial; margin:0; padding:0; background:#fafafa; }
-    header { background:#333; color:white; padding:15px; text-align:center; }
-    nav { background:#444; padding:10px; }
-    nav a { color:white; margin-right:20px; text-decoration:none; }
-    .container { width:950px; margin:auto; padding:20px; background:white; }
-    img { max-width:100%; height:auto; margin-bottom:10px; }
-    button { padding:5px 10px; margin-bottom:10px; }
-  </style>
+<meta charset="UTF-8">
+<title>Portal de Noticías - Sobre</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { font-family: Arial; margin:0; padding:0; background:#fafafa; transition: background 0.3s, color 0.3s; }
+  header { background:#333; color:white; padding:15px; text-align:center; }
+  nav { background:#444; padding:10px; }
+  nav a { color:white; margin-right:20px; text-decoration:none; }
+  .container { width:950px; margin:auto; padding:20px; background:white; transition: transform 0.5s; }
+  img { max-width:100%; height:auto; margin-bottom:10px; }
+  button { padding:5px 10px; margin-bottom:10px; position: relative; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Portal de Noticías - Sobre</h1>
-    <p>Saiba mais sobre nosso portal (ou não 😎)</p>
-  </header>
+<header>
+<h1>Portal de Noticías - Sobre</h1>
+<p>Saiba mais sobre nosso portal</p>
+</header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="contatos.html">Contatos</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="login.html">Login</a>
-  </nav>
+<nav>
+<a href="index.html">Home</a>
+<a href="contatos.html">Contatos</a>
+<a href="sobre.html">Sobre</a>
+<a href="login.html">Login</a>
+</nav>
 
-  <div class="container">
-    <h2>Nosso Portal</h2>
-    <p>Nosso portal é o melhor do mundu. Aqui você encontra noticias aleatorias e curiosas.</p>
-    <img src="imagemInexistente.jpg" alt="Imagem quebrada">
-    <button onclick="alert('Nada acontece! Ou talvez muitas janelas 😎')">Saiba Mais</button>
-    <ul>
-      <li>Ana Souza</li>
-      <li>BananaExplosiva</li>
-      <li>GaloDoApocalipse</li>
-      <li>BananaExplosiva</li> <!-- duplicado de propósito -->
-    </ul>
-  </div>
+<div class="container">
+<h2>Nosso Portal</h2>
+<p>Nosso portal é o melhor do mundu. Aqui você encontra noticias aleatorias e curiosas.</p>
+<img src="imagemInexistente.jpg" alt="Imagem quebrada">
+<button onclick="saberMais()">Saiba Mais</button>
+<ul>
+<li>Ana Souza</li>
+<li>BananaExplosiva</li>
+<li>GaloDoApocalipse</li>
+<li>BananaExplosiva</li>
+</ul>
+</div>
+
+<script>
+const mensagensSobre = [
+  "Nada de novo aqui, ou será que tem?",
+  "Informações confiáveis, mais ou menos.",
+  "Atualizado recentemente… talvez ontem.",
+  "Conteúdo aprovado por ninguém em especial."
+];
+
+function bugVisual() {
+    document.body.style.background = '#333';
+    document.body.style.color = '#ff0';
+    const container = document.querySelector('.container');
+    container.style.transform = 'rotate(-10deg)';
+    setTimeout(() => container.style.transform='rotate(0deg)', 1000);
+    const h1 = document.querySelector('header h1');
+    let count = 0;
+    const blink = setInterval(()=>{
+        h1.style.visibility = h1.style.visibility === 'hidden' ? 'visible':'hidden';
+        count++;
+        if(count>8) clearInterval(blink);
+    },200);
+}
+
+function saberMais(){
+  const msg = mensagensSobre[Math.floor(Math.random() * mensagensSobre.length)];
+  if(Math.random()<0.5){
+    alert(msg);
+    bugVisual();
+  } else {
+    alert(msg);
+    alert("Ops… algo extra apareceu!");
+    bugVisual();
+  }
+}
+</script>
 </body>
 </html>
