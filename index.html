@@ -124,19 +124,19 @@
 
     function checarMobile() {
     const banner = document.getElementById("mobileBanner");
-    if (window.innerWidth <= 700) { // largura típica de celular
-        banner.style.display = "block";
-      } else {
-        banner.style.display = "none";
-      }
+    if (window.matchMedia("(max-width: 800px)").matches) { // ajustar valor
+      banner.style.display = "block";
+    } else {
+      banner.style.display = "none";
     }
-
-    // Checa ao carregar e ao redimensionar
-    window.addEventListener("load", checarMobile);
-    window.addEventListener("resize", checarMobile);
+  }
+  
+  window.addEventListener("load", checarMobile);
+  window.addEventListener("resize", checarMobile);
   </script>
 </body>
 </html>
+
 
 
 
