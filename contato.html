@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Portal de Noticías - Contatos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial; margin:0; padding:0; background:#fafafa; }
-    header { background:#333; color:white; padding:15px; text-align:center; }
-    nav { background:#444; padding:10px; }
-    nav a { color:white; margin-right:20px; text-decoration:none; }
-    .container { width:950px; margin:auto; padding:20px; background:white; }
-    input, textarea { display:block; margin-bottom:10px; width:80%; padding:5px; }
-    button { padding:5px 10px; margin-bottom:10px; }
-    .feedback { color:green; font-weight:bold; }
-  </style>
+<meta charset="UTF-8">
+<title>Portal de Noticías - Contatos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { font-family: Arial; margin:0; padding:0; background:#fafafa; }
+  header { background:#333; color:white; padding:15px; text-align:center; }
+  nav { background:#444; padding:10px; }
+  nav a { color:white; margin-right:20px; text-decoration:none; }
+  .container { width:950px; margin:auto; padding:20px; background:white; overflow-x: hidden; }
+  input, textarea { display:block; margin-bottom:10px; width:80%; padding:5px; }
+  button { padding:5px 10px; margin-bottom:10px; position: relative; }
+  .feedback { color:green; font-weight:bold; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Portal de Noticías - Contatos</h1>
-    <p>Fale com a gente (ou não 😎)</p>
-  </header>
+<header>
+<h1>Portal de Noticías - Contatos</h1>
+<p>Fale com a gente (ou não 😎)</p>
+</header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="contatos.html">Contatos</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="login.html">Login</a>
-  </nav>
+<nav>
+<a href="index.html">Home</a>
+<a href="contatos.html">Contatos</a>
+<a href="sobre.html">Sobre</a>
+<a href="login.html">Login</a>
+</nav>
 
-  <div class="container">
-    <h2>Fale Conosco</h2>
-    <form id="contatoForm">
-      <input type="text" placeholder="Nome do seu cachorro" required>
-      <input type="email" placeholder="Emai" required>
-      <input type="tel" placeholder="Telefone (aceita letras)">
-      <textarea placeholder="Mensagem confusa..."></textarea>
-      <button type="submit">Enviar</button>
-      <button type="reset">Resetar</button>
-    </form>
-    <div id="contatoFeedback" class="feedback"></div>
-  </div>
+<div class="container">
+<h2>Fale Conosco</h2>
+<form id="contatoForm">
+<input type="text" placeholder="Nome do seu cachorro" required>
+<input type="email" placeholder="Emai" required>
+<input type="tel" placeholder="Telefone (aceita letras)">
+<textarea placeholder="Mensagem confusa..."></textarea>
+<button type="submit">Enviar</button>
+<button type="reset">Resetar</button>
+</form>
+<div id="contatoFeedback" class="feedback"></div>
+</div>
 
-  <script>
-    document.getElementById("contatoForm").onsubmit = function(e) {
-      e.preventDefault();
-      // Feedback engraçado, funciona mesmo se campos vazios
-      document.getElementById("contatoFeedback").innerText = "Obrigado! 😎";
-    };
-    document.getElementById("contatoForm").onreset = function(e) {
-      alert("Reset concluído!");
-    };
-  </script>
+<script>
+// Feedback engraçado intermitente
+document.getElementById("contatoForm").onsubmit = function(e){
+    e.preventDefault();
+    if(Math.random() < 0.7){
+        document.getElementById("contatoFeedback").innerText = "Obrigado! Você merece nota máxima 😎";
+    } else {
+        document.getElementById("contatoFeedback").innerText = "Ops, algo estranho aconteceu...";
+    }
+};
+
+// Reset aleatório
+document.getElementById("contatoForm").onreset = function(e){
+    if(Math.random() < 0.5){
+        alert("Reset concluído!");
+    }
+};
+</script>
 </body>
 </html>
