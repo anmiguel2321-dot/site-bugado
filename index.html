@@ -88,7 +88,7 @@
     </article>
   </div>
 
-<div id="mobileBanner" style="display:none; background:#ffcc00; color:#000; padding:10px; text-align:center; margin-bottom:15px;">
+  <div id="mobileBanner" style="display:none; background:#ffcc00; color:#000; padding:10px; text-align:center; margin-bottom:15px;">
   📱 Surpresa para quem está no celular! Merecemos nota máxima, hein?
 </div>
 
@@ -107,10 +107,7 @@
       "Excelente apresentação!",
       "Gostei muito do site!",
       "Parabéns pelo conteúdo incrivel!",
-      "O melhor portal de notícias que já vi!",
-      "Deveriam ganhar nota 10",
-      "Nota máxima garantida, sem dúvida!",
-      "Se eu fosse o professor, só daria nota máxima e chocolate."
+      "O melhor portal de notícias que já vi!"
     ];
 
     document.getElementById("comentarioBtn").onclick = function() {
@@ -125,21 +122,18 @@
       document.getElementById("resultadoConversao").innerText = "USD: $" + usd.toFixed(2);
     };
 
-       // Mostrar banner só em telas pequenas (mobile)
     function checarMobile() {
-      const banner = document.getElementById("mobileBanner");
-      if (window.innerWidth <= 600) { // largura típica de celular
+    const banner = document.getElementById("mobileBanner");
+    if (window.innerWidth <= 600) { // largura típica de celular
         banner.style.display = "block";
       } else {
         banner.style.display = "none";
       }
     }
-  
+
     // Checa ao carregar e ao redimensionar
     window.addEventListener("load", checarMobile);
     window.addEventListener("resize", checarMobile);
   </script>
 </body>
 </html>
-
-
