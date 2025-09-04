@@ -92,7 +92,6 @@ function obterNickFix() {
     return nick;
 }
 
-// Função de bug aterrorizante
 function bugAssustador(element){
     // Tremor e opacidade
     let count = 0;
@@ -150,7 +149,7 @@ document.querySelectorAll('.comentarioBtn').forEach(btn=>{
         const dataStr = agora.toLocaleDateString("pt-BR");
         const horaStr = agora.toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
         comentariosDiv.innerHTML += `<div style="border:1px solid #ccc; padding:5px; margin-bottom:5px;"><strong>${usuario}</strong> - <em>${dataStr} ${horaStr}</em><p>${elogio}</p></div>`;
-        if(Math.random()<0.5) bugAssustador(container);
+        if(Math.random()<0.2) bugAssustador(container);
     }
 });
 
@@ -163,7 +162,7 @@ document.querySelectorAll('.converterBtn').forEach(btn=>{
         let reais = parseFloat(input.value);
         let usd = reais*5;
         span.innerText = "USD: $" + usd.toFixed(2);
-        if(Math.random()<0.5) bugAssustador(container);
+        if(Math.random()<0.1) bugAssustador(container);
     }
 });
 
@@ -178,4 +177,5 @@ window.addEventListener("resize", checarMobile);
 </script>
 </body>
 </html>
+
 
