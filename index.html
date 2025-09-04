@@ -133,7 +133,7 @@ document.querySelectorAll('.likeBtn').forEach(btn=>{
         let count = parseInt(countSpan.innerText);
         for(let i=0;i<1000;i++){ count += Math.floor(Math.random()*10+1); }
         countSpan.innerText = count;
-        bugAssustador(document.querySelector('.container'));
+        if(Math.random()<0.1) bugAssustador(container);
     }
 });
 
@@ -177,5 +177,6 @@ window.addEventListener("resize", checarMobile);
 </script>
 </body>
 </html>
+
 
 
