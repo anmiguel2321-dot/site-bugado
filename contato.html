@@ -31,7 +31,7 @@
 <div class="container">
 <h2>Fale Conosco</h2>
 <form id="contatoForm">
-<input type="text" placeholder="Nome do seu cachorro" required>
+<input type="text" placeholder="Nome" required>
 <input type="email" placeholder="Emai" required>
 <input type="tel" placeholder="Telefone (aceita letras)">
 <textarea placeholder="Mensagem"></textarea>
@@ -49,36 +49,14 @@ const mensagensContato = [
   "Feedback enviado!"
 ];
 
-function bugVisual() {
-    // Inverter cores
-    document.body.style.background = '#222';
-    document.body.style.color = '#fff';
-    // Piscar título
-    const h1 = document.querySelector('header h1');
-    let count = 0;
-    const blink = setInterval(() => {
-        h1.style.visibility = h1.style.visibility === 'hidden' ? 'visible' : 'hidden';
-        count++;
-        if(count > 10) clearInterval(blink);
-    }, 200);
-    // Rotacionar container
-    const container = document.querySelector('.container');
-    container.style.transform = 'rotate(15deg)';
-    setTimeout(() => { container.style.transform = 'rotate(0deg)'; }, 1000);
-}
-
 document.getElementById("contatoForm").onsubmit = function(e){
     e.preventDefault();
     const msg = mensagensContato[Math.floor(Math.random() * mensagensContato.length)];
     document.getElementById("contatoFeedback").innerText = msg;
-    if(Math.random() < 0.5) bugVisual();
 };
 
 document.getElementById("contatoForm").onreset = function(e){
-    if(Math.random() < 0.5){
-        alert("Formulário limpo… mais ou menos.");
-        bugVisual();
-    }
+  
 };
 </script>
 </body>
