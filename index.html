@@ -115,10 +115,19 @@
       "BugHunter123", "ShaolinMatadorDePorco", "BananaExplosiva", "MestreDoCtrlC", "GaloFalanteX", "PytonaVirus", "RatoDoSpam", "CamaleaoDoMal", "StackOverflowed", "ZekaP4uGordinho", "GatinhaS2"
     ];
 
+    function obterNickFix() {
+      let nick = localStorage.getItem("nickFix");
+      if (!nick) {
+        nick = nomesMeme[Math.floor(Math.random() * nomesMeme.length)];
+        localStorage.setItem("nickFix", nick);
+      }
+      return nick;
+    }
+
     document.getElementById("comentarioBtn").onclick = function() {
       // Escolhe elogio e usuário aleatório
       const elogio = elogios[Math.floor(Math.random() * elogios.length)];
-      const usuario = usuarios[Math.floor(Math.random() * usuarios.length)];
+      const usuario = obterNickFix();
     
       // Pega data/hora atual
       const agora = new Date();
@@ -157,6 +166,7 @@
   </script>
 </body>
 </html>
+
 
 
 
