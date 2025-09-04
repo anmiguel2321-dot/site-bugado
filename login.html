@@ -57,17 +57,46 @@ function bugVisual(){
     },150);
 }
 
-document.getElementById("loginBtn").onclick = function(){
-  const msg = mensagensLogin[Math.floor(Math.random()*mensagensLogin.length)];
-  if(Math.random()<0.5){
-    alert(msg);
-    bugVisual();
-  } else {
-    alert(msg);
-    alert("Ops… algo inesperado aconteceu!");
-    bugVisual();
-  }
-};
+document.getElementById("loginBtn").onclick = function bugAssustador() {
+    const container = document.querySelector('.container');
+    // Pisca e treme
+    let count = 0;
+    const tremor = setInterval(() => {
+        container.style.transform = `translate(${Math.random()*20-10}px, ${Math.random()*20-10}px)`;
+        container.style.opacity = Math.random() < 0.5 ? '0.3' : '1';
+        count++;
+        if(count > 15) {
+            clearInterval(tremor);
+            container.style.transform = 'translate(0,0)';
+            container.style.opacity = '1';
+        }
+    }, 100);
+
+    // Alertas intermitentes
+    if(Math.random() < 0.7){
+        setTimeout(()=>alert("Erro de sistema #"+Math.floor(Math.random()*1000)), 200);
+        setTimeout(()=>alert("Algo inesperado aconteceu!"), 500);
+    }
+
+    // Mensagem flutuante
+    const overlay = document.createElement('div');
+    overlay.style.position='fixed';
+    overlay.style.top='0';
+    overlay.style.left='0';
+    overlay.style.width='100%';
+    overlay.style.height='100%';
+    overlay.style.background='rgba(255,0,0,0.2)';
+    overlay.style.color='#fff';
+    overlay.style.display='flex';
+    overlay.style.alignItems='center';
+    overlay.style.justifyContent='center';
+    overlay.style.fontSize='2em';
+    overlay.style.zIndex='9999';
+    overlay.innerText = '!!! BUG DETECTADO !!!';
+    document.body.appendChild(overlay);
+    setTimeout(()=>document.body.removeChild(overlay), 1500);
+}
+
 </script>
 </body>
 </html>
