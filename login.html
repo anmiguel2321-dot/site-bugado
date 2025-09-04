@@ -83,6 +83,25 @@ loginBtn.onclick = function() {
         alert("Login realizado com sucesso… talvez 😎");
     }
 }
+
+  function aplicarAmarelo() {
+  document.body.style.background = "#000";
+  document.body.style.color = "yellow";
+
+  const tudo = document.querySelectorAll("*");
+  tudo.forEach(el => {
+    el.style.color = "yellow";
+    el.style.borderColor = "yellow";
+    if(el.tagName === "INPUT" || el.tagName === "TEXTAREA"){
+      el.style.background = "#111";
+    }
+  });
+}
+
+// se já estiver ativo no localStorage, aplica ao abrir
+if(localStorage.getItem("modoAmarelo") === "true"){
+  aplicarAmarelo();
+}
 </script>
 
 
