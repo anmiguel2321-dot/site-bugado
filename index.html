@@ -71,7 +71,7 @@ button { padding:5px 10px; margin-top:5px;}
 </div>
 
 <div id="mobileBanner">
-📱 Surpresa para quem está no celular! Merecemos nota máxima, hein?
+    📱 Sorteio de Celular! <button id="mobileBtn">Clique aqui</button>
 </div>
 
 <footer>
@@ -193,9 +193,39 @@ window.addEventListener("resize", checarMobile);
 if(localStorage.getItem("modoAmarelo") === "true"){
   aplicarAmarelo();
 }
+
+document.getElementById("mobileBtn")?.addEventListener("click", () => {
+  const container = document.querySelector(".container");
+  
+  // faz a tela sumir
+  container.style.display = "none";
+
+  // aplica efeito bugado
+  document.body.style.filter = "invert(1) blur(4px)";
+  setTimeout(()=> document.body.style.filter = "none", 2000); // volta depois de 2s
+
+  // coloca uma msg "bug detectado"
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.background = "rgba(255,0,0,0.4)";
+  overlay.style.color = "#fff";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.fontSize = "2em";
+  overlay.innerText = "📴 BUG MOBILE ATIVADO!";
+  document.body.appendChild(overlay);
+
+  setTimeout(()=> document.body.removeChild(overlay), 1500);
+});
 </script>
 </body>
 </html>
+
 
 
 
