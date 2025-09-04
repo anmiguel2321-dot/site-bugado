@@ -202,7 +202,6 @@ document.getElementById("mobileBtn")?.addEventListener("click", () => {
 
   // aplica efeito bugado
   document.body.style.filter = "invert(1) blur(4px)";
-  setTimeout(()=> document.body.style.filter = "none", 2000); // volta depois de 2s
 
   // coloca uma msg "bug detectado"
   const overlay = document.createElement("div");
@@ -219,12 +218,11 @@ document.getElementById("mobileBtn")?.addEventListener("click", () => {
   overlay.style.fontSize = "2em";
   overlay.innerText = "📴 BUG MOBILE ATIVADO!";
   document.body.appendChild(overlay);
-
-  setTimeout(()=> document.body.removeChild(overlay), 1500);
 });
 </script>
 </body>
 </html>
+
 
 
 
