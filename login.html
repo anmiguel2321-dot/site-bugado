@@ -35,52 +35,21 @@
 </div>
 
 <script>
-const mensagensLogin = [
-  "Login realizado! Ou você só imaginou isso.",
-  "Senha aceita, mas não garantimos nada.",
-  "Bem-vindo(a)… talvez você esteja logado.",
-  "Credenciais verificadas! Provavelmente."
-];
-
-function bugVisual(){
-    document.body.style.background = '#111';
-    document.body.style.color = '#0f0';
-    const container = document.querySelector('.container');
-    container.style.transform = 'rotate(12deg)';
-    setTimeout(()=>container.style.transform='rotate(0deg)', 1000);
-    const h1 = document.querySelector('header h1');
-    let count=0;
-    const blink = setInterval(()=>{
-        h1.style.visibility = h1.style.visibility==='hidden'?'visible':'hidden';
-        count++;
-        if(count>10) clearInterval(blink);
-    },150);
-}
-
+<script>
+const senhaInput = document.querySelector('input[type="password"]');
 const loginBtn = document.getElementById("loginBtn");
-const inputUsuario = document.querySelector('input[type="text"]');
-const inputSenha = document.querySelector('input[type="password"]');
+const senhaFulano = "fuylano123"; // senha “proibida”
 
-loginBtn.onclick = function() {
-    // Autopreenchimento automático “aleatório”
-    if(Math.random() < 0.5) {
-        inputUsuario.value = "bananaExplosiva";
-        inputSenha.value = "123456Suspeito";
-    } else {
-        inputUsuario.value = "glitchMaster";
-        inputSenha.value = "senhaErrada";
-    }
+// Função do bug assustador
+function bugAssustador(element){
+    let count = 0;
+    const tremor = setInterval(()=>{
+        element.style.transform = `translate(${Math.random()*20-10}px, ${Math.random()*20-10}px)`;
+        element.style.opacity = Math.random() < 0.5 ? '0.3' : '1';
+        count++;
+        if(count>15){ clearInterval(tremor); element.style.transform='translate(0,0)'; element.style.opacity='1'; }
+    },100);
 
-    // Simula bug de segurança ao tentar logar
-    const container = document.querySelector('.container');
-    container.style.transform = `rotate(${Math.random()*40-20}deg)`;
-    container.style.opacity = Math.random() < 0.5 ? '0.3' : '1';
-    
-    // Alertas engraçados
-    setTimeout(()=>alert("Sistema de segurança ativado!"), 200);
-    setTimeout(()=>alert("Tentativa de login detectada… mas não foi bem-sucedida!"), 600);
-
-    // Overlay vermelho piscante
     const overlay = document.createElement('div');
     overlay.style.position='fixed';
     overlay.style.top='0';
@@ -94,10 +63,28 @@ loginBtn.onclick = function() {
     overlay.style.justifyContent='center';
     overlay.style.fontSize='2em';
     overlay.style.zIndex='9999';
-    overlay.innerText = '!!! SEGURANÇA ATIVADA !!!';
+    overlay.innerText='!!! BUG DETECTADO !!!';
     document.body.appendChild(overlay);
-    setTimeout(()=>document.body.removeChild(overlay), 1500);
+    setTimeout(()=>document.body.removeChild(overlay),1500);
 }
+
+loginBtn.onclick = function() {
+    const senha = senhaInput.value.trim();
+    const tentativas = localStorage.getItem('tentativaFulano') || '0';
+
+    if(senha === senhaFulano){
+        if(tentativas === '0'){
+            alert("Fulano já utiliza essa senha!");
+            localStorage.setItem('tentativaFulano', '1'); // marca primeira tentativa
+        } else {
+            bugAssustador(document.body); // segunda tentativa: bug
+        }
+    } else {
+        alert("Login realizado com sucesso… talvez 😎");
+    }
+}
+</script>
+
 
 </script>
 </body>
